@@ -77,8 +77,37 @@ body {
   font-size: 13px;
 }
 
-.description {
-  font-weight: 500;
+.card_title {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.card_desc {
+  font-size: 12px;
+  color: #5b6873;
+}
+
+.priority {
+  display: flex;
+  align-items: center;
+  background-color: #ffeeee;
+  padding: 0px 10px;
+  border-radius: 5px;
+}
+
+.priority_dot {
+  height: 7px;
+  width: 7px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.priority_text {
+  margin-left: 5px;
+  color: red;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 /* @media (min-width: 599px) and (max-width: 1024px) {
