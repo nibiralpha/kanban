@@ -5,10 +5,7 @@ import styles from "./Card.module.css";
 export default function CardComponent() {
   return (
     <div className={styles.inner_column}>
-      <div className={styles.header}>
-        <div className={styles.backlog}>Backlog</div>
-        <div className={styles.plus}>+</div>
-      </div>
+      
       <div className={styles.card}>
         <div className={styles.title_area}>
           <div className={styles.title}>ID - 01</div>

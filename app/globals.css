@@ -35,6 +35,23 @@ body {
   background-color: #f6f6f6;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.backlog {
+  font-weight: 600;
+}
+
+.plus {
+  font-size: 26px;
+  color: #939393;
+  font-weight: 600;
+}
+
 /* @media (min-width: 599px) and (max-width: 1024px) {
   .row {
     margin-right: 0;

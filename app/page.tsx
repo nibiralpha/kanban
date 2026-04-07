@@ -7,6 +7,12 @@ export default function Home() {
         <div className="row">
           <div className="col-3">
             <div className="inner_column">
+              <div className="header">
+                <div className="backlog">Backlog</div>
+                <div className="plus">+</div>
+              </div>
+              <CardComponent />
+              <CardComponent />
               <CardComponent />
             </div>
           </div>

@@ -1,9 +1,4 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
+
 
 .top_margin {
   margin-top: 20px;
@@ -21,16 +16,6 @@
 .card .title_area {
   display: flex;
   justify-content: space-between;
-}
-
-.backlog {
-  font-weight: 600;
-}
-
-.plus {
-  font-size: 26px;
-  color: #939393;
-  font-weight: 600;
 }
 
 .title_area .title {
