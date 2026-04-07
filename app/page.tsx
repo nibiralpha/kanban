@@ -6,7 +6,9 @@ export default function Home() {
       <div className="top_margin">
         <div className="row">
           <div className="col-3">
-            <CardComponent />
+            <div className="inner_column">
+              <CardComponent />
+            </div>
           </div>
         </div>
       </div>
