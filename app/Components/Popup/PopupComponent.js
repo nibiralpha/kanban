@@ -21,7 +21,6 @@ const taskStatus = [
   { id: 3, name: "High" },
 ];
 export default function PopupComponent({ openPopup, setOpenPopup }) {
-  let [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   const [selectedStatus, setSelectedStatus] = useState(taskStatus[0]);
