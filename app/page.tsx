@@ -111,7 +111,7 @@ export default function Home() {
                   <Input
                     name="full_name"
                     type="text"
-                    className="input_border mb-5 input_text h-10"
+                    className="input_border mb-5 input_text h-10 focus:outline-none"
                   />
                 </div>
 
@@ -120,7 +120,7 @@ export default function Home() {
                   <Textarea
                     name="description"
                     rows={5}
-                    className="input_border input_text"
+                    className="input_border input_text focus:outline-none"
                   />
                 </div>
                 <div>Priority</div>
