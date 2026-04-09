@@ -76,9 +76,9 @@ export default function PopupComponent({ openPopup, setOpenPopup }) {
               <div>Priority</div>
               <div className="relative">
                 <Listbox value={selectedStatus} onChange={setSelectedStatus}>
-                  <ListboxButton className="input_text input_border w-full text-left flex justify-between items-center bg-white/10 px-3 py-2 rounded-lg text-white">
+                  <ListboxButton className="input_text input_border w-full text-left flex justify-between items-center bg-white/10 px-3 py-2 rounded-lg text-black">
                     {selectedStatus.name}
-                    {/* <span className="text-xs">▼</span> */}
+                    <span className="text-xs">▼</span>
                   </ListboxButton>
 
                   <ListboxOptions
@@ -87,6 +87,7 @@ export default function PopupComponent({ openPopup, setOpenPopup }) {
                   >
                     {taskStatus.map((status) => (
                       <ListboxOption
+                        anchor="bottom start"
                         key={status.id}
                         value={status}
                         className="group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none data-[focus]:bg-white/10"
