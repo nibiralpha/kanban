@@ -101,40 +101,49 @@ export default function Home() {
             >
               <DialogTitle
                 as="h3"
-                className="text-base/7 font-medium text-white mb-10 font-semibold"
+                className="text-base/7 font-medium text-black mb-10 font-semibold"
               >
                 Add Task
               </DialogTitle>
-              {/* <p className="mt-2 text-sm/6 text-black/50"> */}
-              {/* Your payment has been successfully submitted. We’ve sent you an
-                email with all of the details of your order. */}
               <div className="add_task">
                 <div>
-                  <div className="">Title</div>
+                  <div className="text-black">Title</div>
                   <Input
                     name="full_name"
                     type="text"
-                    className="input_border mb-5"
+                    className="input_border mb-5 input_text h-10"
                   />
                 </div>
 
                 <div className="">Description</div>
-                <div>
-                  <Textarea name="description" className="input_border" />
+                <div className="mb-5">
+                  <Textarea
+                    name="description"
+                    rows={5}
+                    className="input_border input_text"
+                  />
                 </div>
-
                 <div>Priority</div>
-                <div>
+                <div className="relative">
                   <Listbox value={selectedStatus} onChange={setSelectedStatus}>
-                    <ListboxButton>{selectedStatus.name}</ListboxButton>
-                    <ListboxOptions anchor="bottom">
+                    <ListboxButton className="input_text input_border w-full text-left flex justify-between items-center bg-white/10 px-3 py-2 rounded-lg text-white">
+                      {selectedStatus.name}
+                      <span className="text-xs">▼</span>
+                    </ListboxButton>
+
+                    <ListboxOptions
+                      anchor="bottom start"
+                      className="w-[var(--button-width)] rounded-xl border border-white/10 bg-gray-800 p-1 [--anchor-gap:var(--spacing-1)] focus:outline-none z-50 mt-1"
+                    >
                       {taskStatus.map((status) => (
                         <ListboxOption
                           key={status.id}
                           value={status}
-                          className="data-focus:bg-blue-100"
+                          className="group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none data-[focus]:bg-white/10"
                         >
-                          {status.name}
+                          <div className="text-sm/6 text-white">
+                            {status.name}
+                          </div>
                         </ListboxOption>
                       ))}
                     </ListboxOptions>
@@ -148,6 +157,12 @@ export default function Home() {
                   onClick={close}
                 >
                   Submit
+                </Button>
+                <Button
+                  className="ml-2 inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
+                  onClick={close}
+                >
+                  Close
                 </Button>
               </div>
             </DialogPanel>

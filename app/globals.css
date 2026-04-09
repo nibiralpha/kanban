@@ -59,18 +59,24 @@ body {
 
 .custom_popup {
   background-color: #ffffff !important;
-  box-shadow: 5px 5px 5px -5px #000000 !important;
+  box-shadow: 5px 5px 50px -5px #000 !important;
 }
 
-#headlessui-dialog-title-_r_7_{
+#headlessui-dialog-title-_r_7_ {
   color: black;
 }
 
-.input_border{
+.input_text{
+  width: 100%;
+  border-radius: 5px;
+  /* height: 30px; */
+}
+
+.input_border {
   border: 1px solid #000 !important;
 }
 
-.add_task{
+.add_task {
   display: flex;
   flex-direction: column;
 }
