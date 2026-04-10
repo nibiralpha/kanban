@@ -11,6 +11,10 @@ export default function Home() {
     // console.log(isOpen);
   }, [isOpen]);
 
+  const closePopup = () => {
+    setIsOpen({ ...isOpen, modal: false });
+  };
+
   return (
     <div className="container">
       {/* <div className="top_bar">Kanban App</div> */}
@@ -74,7 +78,11 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <PopupComponent openPopup={isOpen.modal} setOpenPopup={setIsOpen} />
+      <PopupComponent
+        onClose={closePopup}
+        openPopup={isOpen.modal}
+        setOpenPopup={isOpen}
+      />
     </div>
   );
 }

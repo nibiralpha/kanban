@@ -20,7 +20,8 @@ const taskStatus = [
   { id: 2, name: "Medium" },
   { id: 3, name: "High" },
 ];
-export default function PopupComponent({ openPopup, setOpenPopup }) {
+export default function PopupComponent({ openPopup, setOpenPopup, onClose }) {
+
   const [mounted, setMounted] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState(taskStatus[0]);
   const [data, setData] = useState({
@@ -58,7 +59,7 @@ export default function PopupComponent({ openPopup, setOpenPopup }) {
       // open={isOpen}
       as="div"
       className="relative z-10 focus:outline-none"
-      onClose={close}
+      onClose={onClose}
     >
       <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4">
@@ -124,13 +125,13 @@ export default function PopupComponent({ openPopup, setOpenPopup }) {
             <div className="mt-4">
               <Button
                 className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
-                onClick={close}
+                onClick={onClose}
               >
                 Add Task
               </Button>
               <Button
                 className="ml-2 inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
-                onClick={close}
+                onClick={onClose}
               >
                 Close
               </Button>
