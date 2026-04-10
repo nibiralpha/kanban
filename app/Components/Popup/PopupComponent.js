@@ -21,17 +21,34 @@ const taskStatus = [
   { id: 3, name: "High" },
 ];
 export default function PopupComponent({ openPopup, setOpenPopup }) {
-
   const [mounted, setMounted] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState(taskStatus[0]);
+  const [data, setData] = useState({
+    title: "",
+    desc: "",
+    priority: 0,
+  });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   function close() {
     setOpenPopup({ modal: false });
   }
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  function changeTitle(title) {
+    setData({ ...data, title });
+  }
+
+  function changeDesc(desc) {
+    setData({ ...data, desc });
+  }
+
+  function changePriority(priority) {
+    setSelectedStatus(priority)
+    setData({ ...data, priority: priority.id });
+  }
 
   if (!mounted) return null;
 
@@ -62,6 +79,7 @@ export default function PopupComponent({ openPopup, setOpenPopup }) {
                   name="full_name"
                   type="text"
                   className="input_border mb-5 input_text h-10 focus:outline-none"
+                  onChange={() => changeTitle(event.target.value)}
                 />
               </div>
 
@@ -71,11 +89,12 @@ export default function PopupComponent({ openPopup, setOpenPopup }) {
                   name="description"
                   rows={5}
                   className="input_border input_text focus:outline-none"
+                  onChange={() => changeDesc(event.target.value)}
                 />
               </div>
               <div>Priority</div>
               <div className="relative">
-                <Listbox value={selectedStatus} onChange={setSelectedStatus}>
+                <Listbox value={selectedStatus} onChange={changePriority}>
                   <ListboxButton className="input_text input_border w-full text-left flex justify-between items-center bg-white/10 px-3 py-2 rounded-lg text-black">
                     {selectedStatus.name}
                     <span className="text-xs">▼</span>
