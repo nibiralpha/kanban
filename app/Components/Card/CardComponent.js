@@ -2,10 +2,10 @@
 
 import styles from "./Card.module.css";
 
-export default function CardComponent() {
+export default function CardComponent(data, type) {
+  
   return (
     <div className={styles.inner_column}>
-      
       <div className={styles.card}>
         <div className={styles.title_area}>
           <div className={styles.title}>ID - 01</div>
@@ -14,8 +14,8 @@ export default function CardComponent() {
             <div className={styles.priority_text}>HIGH</div>
           </div>
         </div>
-        <div className={styles.card_title}>Design & Development</div>
-        <div className={styles.card_desc}>Impliment CRUD on users</div>
+        <div className={styles.card_title}>{data?.data?.title}</div>
+        <div className={styles.card_desc}>{data?.data?.desc}</div>
       </div>
     </div>
   );

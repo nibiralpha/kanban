@@ -6,14 +6,21 @@ import PopupComponent from "./Components/Popup/PopupComponent";
 
 export default function Home() {
   let [isOpen, setIsOpen] = useState({ modal: false, card: "" });
+  let [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
-    // console.log(isOpen);
-  }, [isOpen]);
+  // useEffect(() => {
+  //   console.log("taaaaask", tasks);
+  // }, [tasks]);
 
   const closePopup = () => {
     setIsOpen({ ...isOpen, modal: false });
   };
+
+  const save = (data) => {
+    setTasks([...tasks, data]);
+  };
+
+  console.log(tasks);
 
   return (
     <div className="container">
@@ -31,7 +38,12 @@ export default function Home() {
                   +
                 </div>
               </div>
-              <CardComponent />
+              {tasks.map(
+                (task, i) =>
+                  task.card === "backlog" && (
+                    <CardComponent type="backlog" key={i} data={task} />
+                  ),
+              )}
             </div>
           </div>
           <div className="col-3">
@@ -45,7 +57,12 @@ export default function Home() {
                   +
                 </div>
               </div>
-              <CardComponent />
+              {tasks.map(
+                (task, i) =>
+                  task.card === "todo" && (
+                    <CardComponent type="todo" key={i} data={task} />
+                  ),
+              )}
             </div>
           </div>
           <div className="col-3">
@@ -59,7 +76,12 @@ export default function Home() {
                   +
                 </div>
               </div>
-              <CardComponent />
+              {tasks.map(
+                (task, i) =>
+                  task.card === "inProgress" && (
+                    <CardComponent type="inProgress" key={i} data={task} />
+                  ),
+              )}
             </div>
           </div>
           <div className="col-3">
@@ -73,13 +95,19 @@ export default function Home() {
                   +
                 </div>
               </div>
-              <CardComponent />
+              {tasks.map(
+                (task, i) =>
+                  task.card === "done" && (
+                    <CardComponent type="done" key={i} data={task} />
+                  ),
+              )}
             </div>
           </div>
         </div>
       </div>
       <PopupComponent
         onClose={closePopup}
+        onSave={save}
         openPopup={isOpen.modal}
         setOpenPopup={isOpen}
       />

@@ -20,8 +20,12 @@ const taskStatus = [
   { id: 2, name: "Medium" },
   { id: 3, name: "High" },
 ];
-export default function PopupComponent({ openPopup, setOpenPopup, onClose }) {
-
+export default function PopupComponent({
+  openPopup,
+  setOpenPopup,
+  onClose,
+  onSave,
+}) {
   const [mounted, setMounted] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState(taskStatus[0]);
   const [data, setData] = useState({
@@ -47,9 +51,14 @@ export default function PopupComponent({ openPopup, setOpenPopup, onClose }) {
   }
 
   function changePriority(priority) {
-    setSelectedStatus(priority)
+    setSelectedStatus(priority);
     setData({ ...data, priority: priority.id });
   }
+
+  const addTask = () => {
+    data.card = setOpenPopup.card;
+    onSave(data);
+  };
 
   if (!mounted) return null;
 
@@ -125,7 +134,7 @@ export default function PopupComponent({ openPopup, setOpenPopup, onClose }) {
             <div className="mt-4">
               <Button
                 className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
-                onClick={onClose}
+                onClick={addTask}
               >
                 Add Task
               </Button>
