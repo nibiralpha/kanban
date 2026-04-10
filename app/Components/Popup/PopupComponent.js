@@ -21,12 +21,12 @@ const taskStatus = [
   { id: 3, name: "High" },
 ];
 export default function PopupComponent({ openPopup, setOpenPopup }) {
-  const [mounted, setMounted] = useState(false);
 
+  const [mounted, setMounted] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState(taskStatus[0]);
 
   function close() {
-    setOpenPopup(false);
+    setOpenPopup({ modal: false });
   }
 
   useEffect(() => {
@@ -107,7 +107,7 @@ export default function PopupComponent({ openPopup, setOpenPopup }) {
                 className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
                 onClick={close}
               >
-                Submit
+                Add Task
               </Button>
               <Button
                 className="ml-2 inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
