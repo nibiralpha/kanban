@@ -30,13 +30,14 @@ export default function PopupComponent({
   const [mounted, setMounted] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState(taskStatus[0]);
   const [data, setData] = useState({
+    id: "",
     title: "",
     desc: "",
     priority: 1,
+    card: "",
   });
 
   useEffect(() => {
-
     setMounted(true);
   }, []);
 
@@ -81,6 +82,8 @@ export default function PopupComponent({
     setErrors([]);
     onClose();
     data.card = setOpenPopup.card;
+    data.id = crypto.randomUUID();
+
     onSave(data);
     setData({ title: "", desc: "", priority: 1 });
     setSelectedStatus(taskStatus[0]);
@@ -117,9 +120,6 @@ export default function PopupComponent({
                   className="input_border input_text h-10 focus:outline-none"
                   onChange={() => changeTitle(event.target.value)}
                 />
-                {/* <div className="text-[12px] text-red-500">
-                  Title can not be empty
-                </div> */}
               </div>
 
               <div className="">Description</div>
@@ -130,9 +130,6 @@ export default function PopupComponent({
                   className="input_border input_text focus:outline-none -mb-[5px]"
                   onChange={() => changeDesc(event.target.value)}
                 />
-                {/* <div className="text-[12px] text-red-500">
-                  Description can not be empty
-                </div> */}
               </div>
               <div>Priority</div>
               <div className="relative">

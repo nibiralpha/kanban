@@ -8,21 +8,19 @@ export default function Home() {
   let [isOpen, setIsOpen] = useState({ modal: false, card: "" });
   let [tasks, setTasks] = useState([]);
 
-  // useEffect(() => {
-  //   console.log("taaaaask", tasks);
-  // }, [tasks]);
-
   const closePopup = () => {
     setIsOpen({ ...isOpen, modal: false });
   };
 
   const save = (data) => {
-    // console.log(data);
-    
     setTasks([...tasks, data]);
   };
 
-  // console.log(tasks);
+  const deleteTask = (id) => {
+    let taskList = tasks;
+    let deleteTask = taskList.filter((task) => task.id !== id);
+    setTasks(deleteTask);
+  };
 
   return (
     <div className="container">
@@ -43,7 +41,12 @@ export default function Home() {
               {tasks.map(
                 (task, i) =>
                   task.card === "backlog" && (
-                    <CardComponent type="backlog" key={i} data={task} />
+                    <CardComponent
+                      type="backlog"
+                      key={i}
+                      data={task}
+                      deleteTask={deleteTask}
+                    />
                   ),
               )}
             </div>
@@ -62,7 +65,12 @@ export default function Home() {
               {tasks.map(
                 (task, i) =>
                   task.card === "todo" && (
-                    <CardComponent type="todo" key={i} data={task} />
+                    <CardComponent
+                      type="todo"
+                      key={i}
+                      data={task}
+                      deleteTask={deleteTask}
+                    />
                   ),
               )}
             </div>
@@ -81,7 +89,12 @@ export default function Home() {
               {tasks.map(
                 (task, i) =>
                   task.card === "inProgress" && (
-                    <CardComponent type="inProgress" key={i} data={task} />
+                    <CardComponent
+                      type="inProgress"
+                      key={i}
+                      data={task}
+                      deleteTask={deleteTask}
+                    />
                   ),
               )}
             </div>
@@ -100,7 +113,12 @@ export default function Home() {
               {tasks.map(
                 (task, i) =>
                   task.card === "done" && (
-                    <CardComponent type="done" key={i} data={task} />
+                    <CardComponent
+                      type="done"
+                      key={i}
+                      data={task}
+                      deleteTask={deleteTask}
+                    />
                   ),
               )}
             </div>
