@@ -26,6 +26,7 @@ export default function PopupComponent({
   onClose,
   onSave,
 }) {
+  const [errors, setErrors] = useState([]);
   const [mounted, setMounted] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState(taskStatus[0]);
   const [data, setData] = useState({
@@ -35,6 +36,7 @@ export default function PopupComponent({
   });
 
   useEffect(() => {
+
     setMounted(true);
   }, []);
 
@@ -55,9 +57,33 @@ export default function PopupComponent({
     setData({ ...data, priority: priority.id });
   }
 
+  const validate = () => {
+    let errors = [];
+    if (data.title == "") {
+      errors.push({ title: "Please enter a title" });
+    }
+
+    if (data.desc == "") {
+      errors.push({ desc: "Please enter a description" });
+    }
+
+    return errors;
+  };
+
   const addTask = () => {
+    let validateData = validate();
+
+    if (validateData.length > 0) {
+      setErrors(validateData);
+      return;
+    }
+
+    setErrors([]);
+    onClose();
     data.card = setOpenPopup.card;
     onSave(data);
+    setData({ title: "", desc: "", priority: 1 });
+    setSelectedStatus(taskStatus[0]);
   };
 
   if (!mounted) return null;
@@ -83,14 +109,17 @@ export default function PopupComponent({
               Add Task
             </DialogTitle>
             <div className="add_task">
-              <div>
+              <div className="mb-5">
                 <div className="text-black">Title</div>
                 <Input
-                  name="full_name"
+                  name="title"
                   type="text"
-                  className="input_border mb-5 input_text h-10 focus:outline-none"
+                  className="input_border input_text h-10 focus:outline-none"
                   onChange={() => changeTitle(event.target.value)}
                 />
+                {/* <div className="text-[12px] text-red-500">
+                  Title can not be empty
+                </div> */}
               </div>
 
               <div className="">Description</div>
@@ -98,9 +127,12 @@ export default function PopupComponent({
                 <Textarea
                   name="description"
                   rows={5}
-                  className="input_border input_text focus:outline-none"
+                  className="input_border input_text focus:outline-none -mb-[5px]"
                   onChange={() => changeDesc(event.target.value)}
                 />
+                {/* <div className="text-[12px] text-red-500">
+                  Description can not be empty
+                </div> */}
               </div>
               <div>Priority</div>
               <div className="relative">
@@ -131,6 +163,14 @@ export default function PopupComponent({
               </div>
             </div>
             {/* </p> */}
+            <div className="mt-5">
+              {errors.map((error, index) => (
+                <div key={index} className="text-xs text-red-600 font-medium">
+                  {error.title}
+                  {error.desc}
+                </div>
+              ))}
+            </div>
             <div className="mt-4">
               <Button
                 className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
