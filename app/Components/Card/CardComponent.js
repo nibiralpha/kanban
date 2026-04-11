@@ -3,9 +3,6 @@
 import styles from "./Card.module.css";
 
 export default function CardComponent(data, type) {
-  // console.log(data);
-
-  const getPriorityColor = (data) => {};
 
   return (
     <div className={styles.inner_column}>
@@ -41,6 +38,12 @@ export default function CardComponent(data, type) {
         </div>
         <div className={styles.card_title}>{data?.data?.title}</div>
         <div className={styles.card_desc}>{data?.data?.desc}</div>
+
+        <div className="mt-5 flex">
+          <div className="text-[#0002ff] mr-2 text-sm">Edit</div>
+          <div className="text-[#d4d4d4] text-sm">|</div>
+          <div className="text-[#ff0000] ml-2 text-sm">Delete</div>
+        </div>
       </div>
     </div>
   );
