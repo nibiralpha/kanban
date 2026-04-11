@@ -94,7 +94,6 @@ export default function PopupComponent({
   return (
     <Dialog
       open={openPopup}
-      // open={isOpen}
       as="div"
       className="relative z-10 focus:outline-none"
       onClose={onClose}
@@ -159,7 +158,6 @@ export default function PopupComponent({
                 </Listbox>
               </div>
             </div>
-            {/* </p> */}
             <div className="mt-5">
               {errors.map((error, index) => (
                 <div key={index} className="text-xs text-red-600 font-medium">

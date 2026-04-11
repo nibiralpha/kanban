@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import CardComponent from "./Components/Card/CardComponent";
 import PopupComponent from "./Components/Popup/PopupComponent";

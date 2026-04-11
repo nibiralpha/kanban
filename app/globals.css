@@ -56,11 +56,6 @@ body {
   cursor: pointer;
 }
 
-/* #headlessui-dialog-panel-_r_m_ {
-  background-color: #ffffff !important;
-  box-shadow: 5px 5px 5px -5px #000000 !important;
-} */
-
 .custom_popup {
   background-color: #ffffff !important;
   box-shadow: 5px 5px 50px -5px #000 !important;
@@ -74,7 +69,6 @@ body {
   width: 100%;
   border-radius: 5px;
   padding: 10px;
-  /* height: 30px; */
 }
 
 .input_border {
@@ -85,13 +79,3 @@ body {
   display: flex;
   flex-direction: column;
 }
-/* 
-.input_border :focus-visible{
-  border: 1px solid #000 !important;
-} */
-
-/* @media (min-width: 599px) and (max-width: 1024px) {
-  .row {
-    margin-right: 0;
-  }
-} */
