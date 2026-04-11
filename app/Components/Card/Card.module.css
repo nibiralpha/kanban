@@ -56,3 +56,31 @@
   font-size: 12px;
   font-weight: 600;
 }
+
+.medium_dot {
+  height: 7px;
+  width: 7px;
+  background-color: #f59e0b; /* Orange/Amber */
+  border-radius: 50%;
+}
+
+.medium_text {
+  margin-left: 5px;
+  color: #f59e0b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.low_dot {
+  height: 7px;
+  width: 7px;
+  background-color: #22c55e; /* Green */
+  border-radius: 50%;
+}
+
+.low_text {
+  margin-left: 5px;
+  color: #22c55e;
+  font-size: 12px;
+  font-weight: 600;
+}

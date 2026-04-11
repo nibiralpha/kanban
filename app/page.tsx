@@ -17,10 +17,12 @@ export default function Home() {
   };
 
   const save = (data) => {
+    // console.log(data);
+    
     setTasks([...tasks, data]);
   };
 
-  console.log(tasks);
+  // console.log(tasks);
 
   return (
     <div className="container">

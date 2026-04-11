@@ -31,7 +31,7 @@ export default function PopupComponent({
   const [data, setData] = useState({
     title: "",
     desc: "",
-    priority: 0,
+    priority: 1,
   });
 
   useEffect(() => {
