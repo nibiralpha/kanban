@@ -43,8 +43,18 @@ export default function PopupComponent({
     setMounted(true);
   }, []);
 
+  const isEditData = (data) => {
+    if (Object.keys(data).length !== 0) {
+      return true;
+    }
+
+    return false;
+  };
+
   useEffect(() => {
-    console.log(editData);
+    if (isEditData(editData)) {
+      setSelectedStatus(taskStatus[editData.priority - 1]);
+    }
     setMounted(true);
   }, [editData]);
 
