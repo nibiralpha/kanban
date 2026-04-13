@@ -2,8 +2,7 @@
 
 import styles from "./Card.module.css";
 
-export default function CardComponent({ data, type, deleteTask }) {
-
+export default function CardComponent({ data, type, deleteTask, editTaskById }) {
   const deleteTaskById = (id) => {
     deleteTask(id);
   };
@@ -44,7 +43,12 @@ export default function CardComponent({ data, type, deleteTask }) {
         <div className={styles.card_desc}>{data?.desc}</div>
 
         <div className="mt-5 flex">
-          <div className="text-[#0002ff] mr-2 text-sm cursor-pointer">Edit</div>
+          <div
+            onClick={() => editTaskById(data.id)}
+            className="text-[#0002ff] mr-2 text-sm cursor-pointer"
+          >
+            Edit
+          </div>
           <div className="text-[#d4d4d4] text-sm">|</div>
           <div
             className="text-[#ff0000] ml-2 text-sm cursor-pointer"

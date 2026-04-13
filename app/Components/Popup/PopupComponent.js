@@ -25,6 +25,8 @@ export default function PopupComponent({
   setOpenPopup,
   onClose,
   onSave,
+  editData,
+  isEdit,
 }) {
   const [errors, setErrors] = useState([]);
   const [mounted, setMounted] = useState(false);
@@ -40,6 +42,11 @@ export default function PopupComponent({
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    console.log(editData);
+    setMounted(true);
+  }, [editData]);
 
   function close() {
     setOpenPopup({ modal: false });
@@ -114,6 +121,7 @@ export default function PopupComponent({
               <div className="mb-5">
                 <div className="text-black">Title</div>
                 <Input
+                  defaultValue={editData.title}
                   name="title"
                   type="text"
                   className="input_border input_text h-10 focus:outline-none"
@@ -124,6 +132,7 @@ export default function PopupComponent({
               <div className="">Description</div>
               <div className="mb-5">
                 <Textarea
+                  defaultValue={editData.desc}
                   name="description"
                   rows={5}
                   className="input_border input_text focus:outline-none -mb-[5px]"
