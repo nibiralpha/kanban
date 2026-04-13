@@ -6,9 +6,13 @@ import PopupComponent from "./Components/Popup/PopupComponent";
 
 export default function Home() {
   let [isOpen, setIsOpen] = useState({ modal: false, card: "" });
+  let [dataToEdit, setDataToEdit] = useState({});
+  let [isEdit, setIsEdit] = useState(false);
   let [tasks, setTasks] = useState([]);
 
   const closePopup = () => {
+    setIsEdit(false);
+    setDataToEdit({});
     setIsOpen({ ...isOpen, modal: false });
   };
 
@@ -16,10 +20,35 @@ export default function Home() {
     setTasks([...tasks, data]);
   };
 
+  const update = (data) => {
+    console.log(data);
+    let taskList = [...tasks];
+    taskList.forEach((task) => {
+      if(task.id == data.id){
+        task.title = data.title;
+        task.desc = data.desc;
+        task.priority = data.priority;
+      }
+    });
+    setTasks(taskList);
+  };
+
   const deleteTask = (id) => {
     let taskList = tasks;
     let deleteTask = taskList.filter((task) => task.id !== id);
     setTasks(deleteTask);
+  };
+
+  const editTaskById = (id) => {
+    let taskArray = tasks.filter((task) => task.id == id);
+    let task = taskArray[0];
+
+    // NEED TO FIX SET STATE
+    setIsEdit(true);
+    setDataToEdit(task);
+    setIsOpen({ modal: true, card: task });
+
+    console.log(dataToEdit);
   };
 
   return (
@@ -46,6 +75,7 @@ export default function Home() {
                       key={i}
                       data={task}
                       deleteTask={deleteTask}
+                      editTaskById={editTaskById}
                     />
                   ),
               )}
@@ -128,8 +158,11 @@ export default function Home() {
       <PopupComponent
         onClose={closePopup}
         onSave={save}
+        onUpdate={update}
         openPopup={isOpen.modal}
         setOpenPopup={isOpen}
+        // edit={isEdit}
+        editData={dataToEdit}
       />
     </div>
   );
