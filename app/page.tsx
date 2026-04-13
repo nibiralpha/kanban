@@ -20,6 +20,19 @@ export default function Home() {
     setTasks([...tasks, data]);
   };
 
+  const update = (data) => {
+    console.log(data);
+    let taskList = [...tasks];
+    taskList.forEach((task) => {
+      if(task.id == data.id){
+        task.title = data.title;
+        task.desc = data.desc;
+        task.priority = data.priority;
+      }
+    });
+    setTasks(taskList);
+  };
+
   const deleteTask = (id) => {
     let taskList = tasks;
     let deleteTask = taskList.filter((task) => task.id !== id);
@@ -145,6 +158,7 @@ export default function Home() {
       <PopupComponent
         onClose={closePopup}
         onSave={save}
+        onUpdate={update}
         openPopup={isOpen.modal}
         setOpenPopup={isOpen}
         // edit={isEdit}

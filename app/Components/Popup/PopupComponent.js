@@ -25,6 +25,7 @@ export default function PopupComponent({
   setOpenPopup,
   onClose,
   onSave,
+  onUpdate,
   editData,
   isEdit,
 }) {
@@ -104,6 +105,25 @@ export default function PopupComponent({
     onSave(data);
     setData({ title: "", desc: "", priority: 1 });
     setSelectedStatus(taskStatus[0]);
+  };
+  
+  const updateTask = () => {
+    let validateData = validate();
+
+    if (validateData.length > 0) {
+      setErrors(validateData);
+      return;
+    }
+
+    setErrors([]);
+    onClose();
+    // data.card = setOpenPopup.card;
+    data.id = editData.id;
+    // console.log("update", editData);
+    
+    onUpdate(data);
+    // setData({ title: "", desc: "", priority: 1 });
+    // setSelectedStatus(taskStatus[0]);
   };
 
   if (!mounted) return null;
@@ -188,9 +208,9 @@ export default function PopupComponent({
             <div className="mt-4">
               <Button
                 className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
-                onClick={addTask}
+                onClick={isEditData(editData) == true ? updateTask : addTask}
               >
-                Add Task
+                {isEditData(editData) == true ? "Update" : "Add Task"}
               </Button>
               <Button
                 className="ml-2 inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
