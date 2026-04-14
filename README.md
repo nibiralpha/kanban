@@ -1,8 +1,7 @@
 Live url
 
 
-[https://news-peaks.netlify.app/](https://kanabanapp.netlify.app/)
-
+https://kanabanapp.netlify.app/
 # Tech Stack
 
 Next JS
