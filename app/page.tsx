@@ -60,7 +60,7 @@ export default function Home() {
   };
   return (
     <div className="container">
-      {/* <div className="top_bar">Kanban App</div> */}
+      <div className="top_bar">Kanban App</div>
       <div className="top_margin">
         <div className="row">
           <div className="col-3">

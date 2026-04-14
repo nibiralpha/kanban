@@ -79,3 +79,10 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.top_bar{
+  margin-bottom: 20px;
+    padding: 15px 20px;
+    background-color: #efefef;
+    margin-left: 0px;
+}
