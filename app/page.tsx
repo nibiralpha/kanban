@@ -100,6 +100,7 @@ export default function Home() {
                       key={i}
                       data={task}
                       deleteTask={deleteTask}
+                      editTaskById={editTaskById}
                     />
                   ),
               )}
@@ -124,6 +125,7 @@ export default function Home() {
                       key={i}
                       data={task}
                       deleteTask={deleteTask}
+                      editTaskById={editTaskById}
                     />
                   ),
               )}
@@ -143,11 +145,12 @@ export default function Home() {
               {tasks.map(
                 (task, i) =>
                   task.card === "done" && (
-                    <CardComponent
+                     <CardComponent
                       type="done"
                       key={i}
                       data={task}
                       deleteTask={deleteTask}
+                      editTaskById={editTaskById}
                     />
                   ),
               )}
