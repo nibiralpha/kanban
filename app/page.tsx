@@ -21,10 +21,9 @@ export default function Home() {
   };
 
   const update = (data) => {
-    console.log(data);
     let taskList = [...tasks];
     taskList.forEach((task) => {
-      if(task.id == data.id){
+      if (task.id == data.id) {
         task.title = data.title;
         task.desc = data.desc;
         task.priority = data.priority;
@@ -47,10 +46,18 @@ export default function Home() {
     setIsEdit(true);
     setDataToEdit(task);
     setIsOpen({ modal: true, card: task });
-
-    console.log(dataToEdit);
   };
 
+  const changeColumn = (id, column) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, card: column };
+      }
+      return task;
+    });
+
+    setTasks(updatedTasks);
+  };
   return (
     <div className="container">
       {/* <div className="top_bar">Kanban App</div> */}
@@ -76,6 +83,7 @@ export default function Home() {
                       data={task}
                       deleteTask={deleteTask}
                       editTaskById={editTaskById}
+                      changeColumn={changeColumn}
                     />
                   ),
               )}
@@ -101,6 +109,7 @@ export default function Home() {
                       data={task}
                       deleteTask={deleteTask}
                       editTaskById={editTaskById}
+                      changeColumn={changeColumn}
                     />
                   ),
               )}
@@ -126,6 +135,7 @@ export default function Home() {
                       data={task}
                       deleteTask={deleteTask}
                       editTaskById={editTaskById}
+                      changeColumn={changeColumn}
                     />
                   ),
               )}
@@ -145,12 +155,13 @@ export default function Home() {
               {tasks.map(
                 (task, i) =>
                   task.card === "done" && (
-                     <CardComponent
+                    <CardComponent
                       type="done"
                       key={i}
                       data={task}
                       deleteTask={deleteTask}
                       editTaskById={editTaskById}
+                      changeColumn={changeColumn}
                     />
                   ),
               )}

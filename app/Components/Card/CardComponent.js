@@ -8,11 +8,18 @@ export default function CardComponent({
   type,
   deleteTask,
   editTaskById,
+  changeColumn
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+// console.log(data);
 
   const deleteTaskById = (id) => {
     deleteTask(id);
+    setIsMenuOpen(false);
+  };
+
+  const onClickMenuItem = (block) => {
+    changeColumn(data.id, block)
     setIsMenuOpen(false);
   };
 
@@ -83,7 +90,7 @@ export default function CardComponent({
                   <li
                     className="p-2 hover:bg-gray-100 cursor-pointer"
                     onClick={() => {
-                      setIsMenuOpen(false);
+                      onClickMenuItem("backlog");
                     }}
                   >
                     Move to Backlog
@@ -91,7 +98,7 @@ export default function CardComponent({
                   <li
                     className="p-2 hover:bg-gray-100 cursor-pointer"
                     onClick={() => {
-                      setIsMenuOpen(false);
+                      onClickMenuItem("todo");
                     }}
                   >
                     Move to Todo
@@ -99,7 +106,7 @@ export default function CardComponent({
                   <li
                     className="p-2 hover:bg-gray-100 cursor-pointer"
                     onClick={() => {
-                      setIsMenuOpen(false);
+                      onClickMenuItem("inProgress");
                     }}
                   >
                     Move to In Progress
@@ -107,7 +114,7 @@ export default function CardComponent({
                   <li
                     className="p-2 hover:bg-gray-100 cursor-pointer"
                     onClick={() => {
-                      setIsMenuOpen(false);
+                      onClickMenuItem("done");
                     }}
                   >
                     Move to Done
