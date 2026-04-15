@@ -11,7 +11,6 @@ export default function CardComponent({
   changeColumn
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-// console.log(data);
 
   const deleteTaskById = (id) => {
     deleteTask(id);

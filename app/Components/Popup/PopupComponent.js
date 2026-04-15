@@ -119,11 +119,8 @@ export default function PopupComponent({
     onClose();
     // data.card = setOpenPopup.card;
     data.id = editData.id;
-    // console.log("update", editData);
     
     onUpdate(data);
-    // setData({ title: "", desc: "", priority: 1 });
-    // setSelectedStatus(taskStatus[0]);
   };
 
   if (!mounted) return null;
