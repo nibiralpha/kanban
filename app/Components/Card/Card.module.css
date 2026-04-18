@@ -58,7 +58,7 @@
 .medium_dot {
   height: 7px;
   width: 7px;
-  background-color: #f59e0b; /* Orange/Amber */
+  background-color: #f59e0b;
   border-radius: 50%;
 }
 
@@ -72,7 +72,7 @@
 .low_dot {
   height: 7px;
   width: 7px;
-  background-color: #22c55e; /* Green */
+  background-color: #22c55e;
   border-radius: 50%;
 }
 
